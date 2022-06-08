@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+double a;
+double b;
+cout << "Введите длину: ";
+cin >> a;
+cout << "Введите ширину: ";
+cin >> b;
+cout << "S прямоугольника = " << a * b << endl;
+}
