@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+struct Tree {
+	int data;
+	Tree* left;
+	Tree* right;
+	Tree(int val) {
+		data = val;
+		left = right = NULL;
+	}
+};
+void Insert(Tree*& root, int val) {
+	if (!root) {
+		root = new Tree(val);
+		return;
+	}
+	if (val > root->data) {
+		Insert(root->right, val);
+	}
+	else {
+		Insert(root->left, val);
+	}
+}
+
+void vozrastanie(Tree*& root) {
+	if (!root) {
+		return;
+	}
+	vozrastanie(root->left);
+	cout << root->data << endl;
+	vozrastanie(root->right);
+}
+
+void ubivanie(Tree*& root) {
+	if (!root) {
+		return;
+	}
+	ubivanie(root->right);
+	cout << root->data << endl;
+	ubivanie(root->left);
+}
+
+int main() {
+	Tree* root = NULL;
+	Insert(root, 8);
+	Insert(root, 9);
+	Insert(root, 4);
+	Insert(root, 7);
+	Insert(root, 11);
+	Insert(root, 5);
+	Insert(root, 10);
+	Insert(root, 6);
+	cout << "В порядке возрастания->" << endl;
+	vozrastanie(root);
+	cout << "В порядке убывания->" << endl;
+	ubivanie(root);
+	return 0;
+}
